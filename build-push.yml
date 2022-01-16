@@ -13,6 +13,7 @@ resources:
     icon: docker
     source:
       repository: ((image-repo-name))/simple-image
+      tag: v1
       username: ((registry-username))
       password: ((registry-password))
 

@@ -15,7 +15,8 @@ resources:
     type: registry-image
     icon: docker
     source:
-      repository: ((image-repo-name))/simple-image
+      repository: ((image-repo-name))/python-aws
+      tag: v1
       username: ((registry-username))
       password: ((registry-password))
 
@@ -39,6 +40,6 @@ jobs:
             CONTEXT: python-aws/Dockerfiles/simple
           run:
             path: build
-      - put: simple-image
+      - put: python-aws-build-image
         params:
           image: image/image.tar
