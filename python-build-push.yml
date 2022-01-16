@@ -1,21 +1,21 @@
 resources:
   # The repo with our Dockerfile
-  - name: python-aws
+  - name: git-dockerfile-resource
     type: git
     icon: github
     source:
-      uri: git@github.com:sconrod-tester/docker-builds.git
+      uri: ((git-uri))
       branch: python-aws
       Username: ((Username))
       email: ((email))
       private_key: ((private_key))
 
   # Where we will push the image
-  - name: python-aws-build-image
+  - name: python-aws-image
     type: registry-image
     icon: docker
     source:
-      repository: ((image-repo-name))/python-aws
+      repository: ((image-repo-name))/python-aws-image
       tag: v1
       username: ((registry-username))
       password: ((registry-password))
@@ -23,7 +23,7 @@ resources:
 jobs:
   - name: build-and-push
     plan:
-      - get: python-aws
+      - get: git-dockerfile-resource
       - task: build-task-image
         privileged: true
         config:
@@ -33,13 +33,13 @@ jobs:
             source:
               repository: concourse/oci-build-task
           inputs:
-            - name: python-aws
+            - name: git-dockerfile-resource
           outputs:
             - name: image
           params:
-            CONTEXT: python-aws/Dockerfiles/simple
+            CONTEXT: git-dockerfile-resource
           run:
             path: build
-      - put: python-aws-build-image
+      - put: python-aws-image
         params:
           image: image/image.tar
