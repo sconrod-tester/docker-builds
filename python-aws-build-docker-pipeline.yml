@@ -4,7 +4,7 @@ resources:
     type: git
     icon: github
     source:
-      uri: ((git-uri))
+      uri: ((git-uri-docker))
       branch: python-aws
       Username: ((Username))
       email: ((email))
@@ -16,7 +16,7 @@ resources:
     icon: docker
     source:
       repository: ((image-repo-name))/python-aws-image
-      tag: v1
+      tag: latest
       username: ((registry-username))
       password: ((registry-password))
 
