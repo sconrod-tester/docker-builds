@@ -5,7 +5,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt update -y &&\
     apt upgrade -y && \
-    apt-get -y install \
+    apt -y install \
             software-properties-common \
             vim \
             pwgen \
@@ -22,5 +22,4 @@ RUN apt update -y &&\
     apt purge unzip -y && \
     apt purge curl -y \
     pip3 install -r requirements.txt
-ENV AWS_PAGER=""
 
