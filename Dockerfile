@@ -1,19 +1,21 @@
 FROM ubuntu:20.04
+MAINTAINER Sherri Conrod <devopsontap@yahoo.com>
 
-RUN apt update -y &&\
-    apt upgrade -y && \
-    apt install curl -y && \
-    apt install unzip -y && \
-    apt install software-properties-common -y && \
-    apt vim -y && \
-    apt python3 -y && \
-    apt glibc-source groff less git-core -y && \
-    curl -s -o awscliv2.zip https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip && \
-    unzip awscliv2.zip && \
-    ./aws/install && \
-    rm -rf awscliv2.zip && \
-    rm -rf ./aws && \
-    rm -rf /var/lib/apt/lists/*
+ENV DEBIAN_FRONTEND noninteractive
 
-ENTRYPOINT ["aws"]
-
+RUN \
+  apt-get update && \
+  apt-get -y install \
+          software-properties-common \
+          vim \
+          pwgen \
+          unzip \
+          curl \
+          python3 \
+          python3-pip \
+          glibc-source groff less \
+          git-core && \
+  rm -rf /var/lib/apt/lists/*
+  curl -s -o awscliv2.zip https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip && \
+  unzip awscliv2.zip && \
+  ./aws/install && \
