@@ -3,9 +3,9 @@ MAINTAINER Sherri Conrod <devopsontap@yahoo.com>
 
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN apt update -y &&\
-    apt upgrade -y && \
-    apt -y install \
+RUN apt-get  update -y &&\
+    apt-get upgrade -y && \
+    apt-get -y install \
             software-properties-common \
             vim \
             pwgen \
