@@ -22,6 +22,6 @@ RUN apt update -y &&\
     apt purge unzip -y && \
     apt purge curl -y \
     pip3 install -r requirements.txt
-export AWS_PAGER=""
+    export AWS_PAGER=""
 
 
