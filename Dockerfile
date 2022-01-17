@@ -14,8 +14,6 @@ RUN apt update -y &&\
     rm -rf awscliv2.zip && \
     rm -rf ./aws && \
     rm -rf /var/lib/apt/lists/*
-    apt purge unzip -y && \
-    apt purge curl -y
 
 ENTRYPOINT ["aws"]
 
