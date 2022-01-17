@@ -14,6 +14,7 @@ RUN \
           python3 \
           glibc-source groff less \
           git-core && \
+  rm -rf /var/lib/apt/lists/*
   pip install \
       netmiko \
       lastpass-python \
@@ -21,4 +22,4 @@ RUN \
   CMD ["unzip awscliv2.zip"]
   CMD ["./aws/install"]
   CMD ["export AWS_PAGER="]
-  rm -rf /var/lib/apt/lists/*
+
