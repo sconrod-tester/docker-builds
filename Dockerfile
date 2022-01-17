@@ -3,22 +3,25 @@ MAINTAINER Sherri Conrod <devopsontap@yahoo.com>
 
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN \
-  apt-get update && \
-  apt-get -y install \
-          software-properties-common \
-          vim \
-          pwgen \
-          unzip \
-          curl \
-          python3 \
-          glibc-source groff less \
-          git-core && \
-  rm -rf /var/lib/apt/lists/*
-  CMD ["curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"]
-  CMD ["unzip awscliv2.zip"]
-  CMD ["./aws/install"]
-  CMD ["export AWS_PAGER="]
-  CMD ["pip install netmiko"]
-  CMD ["pip install lastpass-python"]
+RUN apt update -y &&\
+    apt upgrade -y && \
+    apt-get -y install \
+            software-properties-common \
+            vim \
+            pwgen \
+            unzip \
+            curl \
+            python3 \
+            glibc-source groff less \
+            git-core && \
+    curl -s -o awscliv2.zip https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip && \
+    unzip awscliv2.zip && \
+    ./aws/install && \
+    rm -rf awscliv2.zip && \
+    rm -rf ./aws && \
+    apt purge unzip -y && \
+    apt purge curl -y \
+    pip3 install -r requirements.txt
+CMD ["export AWS_PAGER="]
+
 
