@@ -15,11 +15,10 @@ RUN \
           glibc-source groff less \
           git-core && \
   rm -rf /var/lib/apt/lists/*
-  pip install \
-      netmiko \
-      lastpass-python \
   CMD ["curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"]
   CMD ["unzip awscliv2.zip"]
   CMD ["./aws/install"]
   CMD ["export AWS_PAGER="]
+  CMD ["pip install netmiko"]
+  CMD ["pip install lastpass-python"]
 
