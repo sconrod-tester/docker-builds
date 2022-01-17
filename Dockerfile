@@ -18,7 +18,7 @@ RUN \
       netmiko \
       lastpass-python \
   CMD ["curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"]
-  unzip awscliv2.zip
+  CMD ["unzip awscliv2.zip"]
   CMD ["./aws/install"]
   CMD ["export AWS_PAGER="]
   rm -rf /var/lib/apt/lists/*
