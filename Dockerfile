@@ -1,5 +1,3 @@
-ENV DEBIAN_FRONTEND noninteractive
-MAINTAINER Sherri Conrod <devopsontap@yahoo.com>
 FROM ubuntu:20.04
 
 RUN apt update -y &&\
