@@ -9,7 +9,10 @@ RUN apt  update && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/* \
 
-RUN pip3 install paramiko requests ncurses-term urllib3
+COPY requirements.txt ./
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt
+
 
 
 
