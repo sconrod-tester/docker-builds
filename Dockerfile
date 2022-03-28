@@ -9,5 +9,5 @@ RUN apt-get update && \
 #Install the vault requirements \
   curl -fsSL https://apt.releases.hashicorp.com/gpg | apt-key add -    \
   apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main" \
-  apt-get update && apt-get install vault
+  apt-get update && apt-get install vault \
   rm -rf /var/lib/apt/lists/*
