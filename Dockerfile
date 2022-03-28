@@ -9,7 +9,7 @@ RUN apt  update && \
   apt clean && \
 
 
-COPY requirements.txt .
+cp ./requirements.txt .
 RUN pip3 install -r requirements.txt && \
 
 
