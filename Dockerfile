@@ -1,6 +1,6 @@
 FROM ubuntu:20.04
 MAINTAINER Sherri Conrod <devopsontap@yahoo.com>
-#your image name
+#appdynamics build oci
 #update your docker image with your required python modules and other libraries - remember to manuall increment the tag version until symantec verioning is applied
 #Required to use your params file for your docker repo with creds - enter into vault too.
 

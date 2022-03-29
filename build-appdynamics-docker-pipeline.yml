@@ -1,3 +1,5 @@
+display:
+  background_image: app.jpg
 resources:
   # The repo with our Dockerfile
   - name: git-dockerfile-resource
@@ -5,18 +7,18 @@ resources:
     icon: github
     source:
       uri: ((git-uri-docker))
-      branch: ((branch))
+      branch: appdynamics
       Username: ((Username))
       email: ((email))
       private_key: ((private_key))
 
   # Where we will push the image
-  - name: ((image-name))
+  - name: appdynamics
     type: registry-image
     icon: docker
     source:
-      repository: ((image-repo-name))/((image-name))
-      tag: ((tag))
+      repository: ((image-repo-name))/appdynamics
+      tag: 1.0
       username: ((registry-username))
       password: ((registry-password))
 
@@ -40,7 +42,7 @@ jobs:
             CONTEXT: git-dockerfile-resource
           run:
             path: build
-      - put: ((image-name))
+      - put: appdynamics
         params:
           image: image/image.tar
           bump_aliases: true
