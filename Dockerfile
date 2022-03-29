@@ -11,9 +11,6 @@ RUN apt  update && \
 
 RUN pip3 install urllib3 paramiko ncurses-term subprocess
 
-COPY dumb-init/dumb-init_*_x86_64 /usr/local/bin/dumb-init
-RUN chmod +x /usr/local/bin/dumb-init
-
 
 
 
