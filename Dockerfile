@@ -13,6 +13,10 @@ RUN apt  update && \
 
 RUN pip3 install urllib3 paramiko ncurses-term subprocess
 
+RUN curl -fsSL https://apt.releases.hashicorp.com/gpg | apt-key add - && \
+  apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main" && \
+  apt update && apt -y install vault \
+
 
 
 
