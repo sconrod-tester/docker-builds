@@ -1,4 +1,0 @@
-paramiko
-requests
-ncurses-term
-urllib3

@@ -16,7 +16,7 @@ resources:
     icon: docker
     source:
       repository: ((image-repo-name))/thousandeyes-image
-      tag: 1.0
+      tag: 1.1
       username: ((registry-username))
       password: ((registry-password))
 
@@ -43,3 +43,4 @@ jobs:
       - put: thousandeyes-image
         params:
           image: image/image.tar
+          bump_aliases: true
