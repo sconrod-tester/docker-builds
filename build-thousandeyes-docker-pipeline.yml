@@ -16,7 +16,7 @@ resources:
     icon: docker
     source:
       repository: ((image-repo-name))/thousandeyes-image
-      tag: 1.1
+      tag: 1.2
       username: ((registry-username))
       password: ((registry-password))
 
