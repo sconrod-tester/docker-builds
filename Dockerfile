@@ -15,3 +15,7 @@ RUN pip3 install urllib3 paramiko ncurses-term subprocess
 RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && \
   unzip awscliv2.zip && \
   ./aws/install \
+
+RUN curl -fsSL https://apt.releases.hashicorp.com/gpg \
+  apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main" && \
+  apt update && apt -y install vault \
