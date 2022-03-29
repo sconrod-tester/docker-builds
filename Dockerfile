@@ -9,7 +9,7 @@ RUN apt  update && \
   apt clean && \
   rm -rf /var/lib/apt/lists/* \
 
-
+RUN pip3 install urllib3 paramiko ncurses-term subprocess
 
 
 
