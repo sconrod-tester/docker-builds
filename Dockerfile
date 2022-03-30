@@ -5,7 +5,7 @@ MAINTAINER Sherri Conrod <devopsontap@yahoo.com>
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt  update && \
-  apt -y install software-properties-common build-essential vim unzip curl python3 python3-pip glibc-source groff less git-core jq openssh-client openssl make telnet ncurses-term  git && \
+  apt -y install software-properties-common build-essential vim unzip curl python3 python3-pip glibc-source groff less git-core jq openssh-client openssl make telnet ncurses-term git apt-utils && \
   apt clean && \
   rm -rf /var/lib/apt/lists/* \
 
