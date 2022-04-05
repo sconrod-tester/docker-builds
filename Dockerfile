@@ -9,9 +9,6 @@ MAINTAINER Sherri Conrod <devopsontap@yahoo.com>
 RUN apt -y update && \
 apt  -y install liblzo2-dev libblkid-dev e2fslibs-dev pkg-config libz-dev curl vim tree unzip apt-transport-https ca-certificates gnupg software-properties-common jq
 
-COPY dumb-init/dumb-init_*_x86_64 /usr/local/bin/dumb-init
-RUN chmod +x /usr/local/bin/dumb-init
-
 #Install AWS CLI
 
 RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && \
