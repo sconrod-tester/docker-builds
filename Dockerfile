@@ -2,7 +2,7 @@
 #Add in fly??
 FROM ubuntu:20.04
 
-RUN apt-get update && \
+RUN apt-get -y update && \
 apt-get -y install liblzo2-dev libblkid-dev e2fslibs-dev pkg-config libz-dev curl curl vim tree unzip
 
 # base dependencies + jq
