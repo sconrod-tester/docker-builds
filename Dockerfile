@@ -6,7 +6,6 @@ ENV DEBIAN_FRONTEND noninteractive
 
 #Used for OCU Build Container for AWS CP, Python 3.6, Python Modules Required for Automating Cisco API Calls
 #Add in fly??
-FROM ubuntu:20.04
 
 RUN apt-get -y update && \
 apt-get -y install liblzo2-dev libblkid-dev e2fslibs-dev pkg-config libz-dev curl curl vim tree unzip
