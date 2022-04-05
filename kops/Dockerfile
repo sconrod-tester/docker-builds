@@ -8,7 +8,7 @@ RUN apt -y update && apt -y upgrade && \
   apt clean && \
   rm -rf /var/lib/apt/lists/* \
 
-RUN pip3 install urllib3 paramiko ncurses-term subprocess
+RUN pip3 install urllib3 paramiko ncurses-term subprocess \
 
 #Install AWS CLI
 
