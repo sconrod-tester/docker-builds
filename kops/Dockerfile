@@ -3,12 +3,12 @@ MAINTAINER Sherri Conrod <devopsontap@yahoo.com>
 #kops
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN apt -y update && apt -y upgrade && \
+RUN apt-get update && \
   apt -y install software-properties-common vim pwgen unzip curl python3 python3-pip glibc-source groff less git-core jq openssl openssh-client && \
   apt clean && \
   rm -rf /var/lib/apt/lists/* \
 
-RUN pip3 install urllib3 paramiko ncurses-term subprocess \
+RUN pip3 install urllib3 paramiko ncurses-term subprocess
 
 #Install AWS CLI
 
@@ -28,9 +28,13 @@ RUN curl -Lo kops https://github.com/kubernetes/kops/releases/download/$(curl -s
     mv kops /usr/local/bin/kops \
 
 #Install kubectl
-RUN apt -y install -y apt-transport-https ca-certificates curl \
-    curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg \
-    echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list \
-    apt -y update && \
-    apt-get install -y kubectl \
+RUN curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" \
+    curl -LO "https://dl.k8s.io/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256" \
+    echo "$(cat kubectl.sha256)  kubectl" | sha256sum --check \
+    install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl \
+    chmod +x kubectl \
+    mkdir -p ~/.local/bin \
+    mv ./kubectl ~/.local/bin/kubectl \
+    kubectl version --client --output=yaml \
+
 
