@@ -11,12 +11,12 @@ resources:
       private_key: ((private_key))
 
   # Where we will push the image
-  - name: ((image-name))
+  - name: kops
     type: registry-image
     icon: docker
     source:
-      repository: ((image-repo-name))/((image-name))
-      tag: ((tag))
+      repository: ((image-repo-name))/kops
+      tag: 1.0
       username: ((registry-username))
       password: ((registry-password))
 
@@ -40,7 +40,7 @@ jobs:
             CONTEXT: git-dockerfile-resource
           run:
             path: build
-      - put: ((image-name))
+      - put: kops
         params:
           image: image/image.tar
           bump_aliases: true
