@@ -1,18 +1,13 @@
 FROM ubuntu:20.04
+ENV DEBIAN_FRONTEND noninteractive
 MAINTAINER Sherri Conrod <devopsontap@yahoo.com>
 #kops-kube
-
-ENV DEBIAN_FRONTEND noninteractive
 
 #Used for OCU Build Container for AWS CP, Python 3.6, Python Modules Required for Automating Cisco API Calls
 #Add in fly??
 
-RUN apt-get -y update && \
-apt-get -y install liblzo2-dev libblkid-dev e2fslibs-dev pkg-config libz-dev curl curl vim tree unzip
-
-# base dependencies + jq
-RUN apt-get update && \
-apt-get install -y apt-transport-https ca-certificates gnupg software-properties-common curl jq
+RUN apt -y update && \
+apt  -y install liblzo2-dev libblkid-dev e2fslibs-dev pkg-config libz-dev curl vim tree unzip apt-transport-https ca-certificates gnupg software-properties-common jq
 
 COPY dumb-init/dumb-init_*_x86_64 /usr/local/bin/dumb-init
 RUN chmod +x /usr/local/bin/dumb-init
