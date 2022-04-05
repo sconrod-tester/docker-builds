@@ -26,13 +26,6 @@ RUN curl "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stabl
 -o /usr/local/bin/kubectl && \
 chmod +x /usr/local/bin/kubectl
 
-# add fly executables
-RUN mkdir /usr/local/concourse/fly-assets
-COPY fly-linux/fly-*.tgz /usr/local/concourse/fly-assets
-COPY fly-windows/fly-*.zip /usr/local/concourse/fly-assets
-COPY fly-darwin/fly-*.tgz /usr/local/concourse/fly-assets
 
-# set $PATH for convenience
-ENV PATH /usr/local/concourse/bin:${PATH}
 
 
