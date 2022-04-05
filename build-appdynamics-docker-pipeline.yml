@@ -1,5 +1,5 @@
 display:
-  background_image: app.jpg
+  background_image: appd.jpg
 resources:
   # The repo with our Dockerfile
   - name: git-dockerfile-resource
