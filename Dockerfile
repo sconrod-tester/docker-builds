@@ -7,31 +7,25 @@ MAINTAINER Sherri Conrod <devopsontap@yahoo.com>
 #Add in fly??
 
 RUN apt -y update && \
-    apt -y install liblzo2-dev libblkid-dev e2fslibs-dev pkg-config libz-dev curl vim tree unzip apt-transport-https ca-certificates gnupg software-properties-common jq openssl && \
-    apt clean && \
-    rm -rf /var/lib/apt/lists/* \
+    apt -y install liblzo2-dev libblkid-dev e2fslibs-dev pkg-config libz-dev curl vim tree unzip apt-transport-https ca-certificates gnupg software-properties-common jq openssl \
 
 #Install AWS CLI
 
 RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && \
-unzip awscliv2.zip && \
-./aws/install
+    unzip awscliv2.zip && \
+    ./aws/install
 
 # install Terraform, ssh and jq for bin-smoke
 RUN curl https://releases.hashicorp.com/terraform/0.14.5/terraform_0.14.5_linux_amd64.zip -o /tmp/terraform.zip && \
-unzip /tmp/terraform.zip -d /usr/local/bin && \
-rm /tmp/terraform.zip
-RUN apt-get update && apt-get -y install jq openssh-client libnss3-tools
+    unzip /tmp/terraform.zip -d /usr/local/bin && \
+    rm /tmp/terraform.zip \
+    RUN apt-get update && apt-get -y install jq openssh-client libnss3-tools
 
 # install kubectl for k8s-related jobs
 RUN curl "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" \
--o /usr/local/bin/kubectl && \
-chmod +x /usr/local/bin/kubectl
+    -o /usr/local/bin/kubectl && \
+    chmod +x /usr/local/bin/kubectl
 
-#install vault
-RUN curl -fsSL https://apt.releases.hashicorp.com/gpg | apt-key add - && \
-  apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main" && \
-  apt -y update && apt -y install vault \
 
 
 
