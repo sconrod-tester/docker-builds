@@ -22,13 +22,3 @@ RUN curl -fsSL https://apt.releases.hashicorp.com/gpg | apt-key add - && \
   apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main" && \
   apt -y update && apt -y install vault \
 
-#Install Kops
-SHELL ["/bin/bash", "-c"]
-RUN apt -y install curl \
-    curl -Lo kops https://github.com/kubernetes/kops/releases/download/$(curl -s https://api.github.com/repos/kubernetes/kops/releases/latest | grep tag_name | cut -d '"' -f 4)/kops-linux-amd64 \
-    chmod +x ./kops \
-
-#Install kubectl
-RUN curl -Lo kubectl https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl \
-    chmod +x ./kubectl \
-    mv ./kubectl /usr/local/bin/kubectl
