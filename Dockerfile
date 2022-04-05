@@ -1,3 +1,9 @@
+FROM ubuntu:20.04
+MAINTAINER Sherri Conrod <devopsontap@yahoo.com>
+#kops-kube
+
+ENV DEBIAN_FRONTEND noninteractive
+
 #Used for OCU Build Container for AWS CP, Python 3.6, Python Modules Required for Automating Cisco API Calls
 #Add in fly??
 FROM ubuntu:20.04
