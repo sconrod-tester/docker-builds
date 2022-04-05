@@ -7,7 +7,9 @@ MAINTAINER Sherri Conrod <devopsontap@yahoo.com>
 #Add in fly??
 
 RUN apt -y update && \
-apt  -y install liblzo2-dev libblkid-dev e2fslibs-dev pkg-config libz-dev curl vim tree unzip apt-transport-https ca-certificates gnupg software-properties-common jq
+apt  -y install liblzo2-dev libblkid-dev e2fslibs-dev pkg-config libz-dev curl vim tree unzip apt-transport-https ca-certificates gnupg software-properties-common jq openssl && \
+    apt clean && \
+    rm -rf /var/lib/apt/lists/* \
 
 #Install AWS CLI
 
@@ -26,6 +28,10 @@ RUN curl "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stabl
 -o /usr/local/bin/kubectl && \
 chmod +x /usr/local/bin/kubectl
 
+#install vault
+RUN curl -fsSL https://apt.releases.hashicorp.com/gpg | apt-key add - && \
+  apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main" && \
+  apt update && apt -y install vault \
 
 
 
