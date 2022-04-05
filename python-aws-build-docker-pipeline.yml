@@ -16,7 +16,7 @@ resources:
     icon: docker
     source:
       repository: ((image-repo-name))/python-aws-image
-      tag: 2.0
+      tag: 2.1
       username: ((registry-username))
       password: ((registry-password))
 
