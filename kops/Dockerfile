@@ -35,6 +35,6 @@ RUN curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/s
     chmod +x kubectl \
     mkdir -p ~/.local/bin \
     mv ./kubectl ~/.local/bin/kubectl \
-    kubectl version --client --output=yaml \
+
 
 
