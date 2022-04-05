@@ -16,13 +16,13 @@ unzip awscliv2.zip && \
 ./aws/install
 
 # install Terraform, ssh and jq for bin-smoke
-RUN curl -fsSL https://releases.hashicorp.com/terraform/0.14.5/terraform_0.14.5_linux_amd64.zip -o /tmp/terraform.zip && \
+RUN curl https://releases.hashicorp.com/terraform/0.14.5/terraform_0.14.5_linux_amd64.zip -o /tmp/terraform.zip && \
 unzip /tmp/terraform.zip -d /usr/local/bin && \
 rm /tmp/terraform.zip
 RUN apt-get update && apt-get -y install jq openssh-client libnss3-tools
 
 # install kubectl for k8s-related jobs
-RUN curl -L "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" \
+RUN curl "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" \
 -o /usr/local/bin/kubectl && \
 chmod +x /usr/local/bin/kubectl
 
