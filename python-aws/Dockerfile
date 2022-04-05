@@ -1,5 +1,6 @@
 FROM ubuntu:20.04
 MAINTAINER Sherri Conrod <devopsontap@yahoo.com>
+#python-aws
 
 ENV DEBIAN_FRONTEND noninteractive
 
