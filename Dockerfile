@@ -19,13 +19,9 @@ RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2
 RUN curl https://apt.releases.hashicorp.com/gpg | apt-key add - && \
   apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main" && \
   apt -y update && apt -y install vault \
+  echo vault --version \
 
-#Install Kubectl
-#Tryin Installing Kubectl - Pre - requisite to install kops \
-RUN apt-get install -y apt-transport-https ca-certificates \
-    curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl \
-    chmod +x ./kubectl \
-    mv ./kubectl /usr/local/bin
+
 
 
 
