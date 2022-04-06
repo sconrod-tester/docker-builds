@@ -23,7 +23,10 @@ RUN apt-get install -y apt-transport-https ca-certificates && \
 
 #Install kops \
 RUN curl -Lo kops https://github.com/kubernetes/kops/releases/download/$(curl -s https://api.github.com/repos/kubernetes/kops/releases/latest | grep tag_name | cut -d '"' -f 4)/kops-linux-amd64 \
-    mv kops /usr/local/bin/kops \
+RUN chmod +x kops
+RUN mv kops /usr/local/bin/kops
+
+
 
 
 
