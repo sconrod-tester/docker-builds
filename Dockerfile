@@ -20,17 +20,7 @@ RUN curl https://apt.releases.hashicorp.com/gpg | apt-key add - && \
   apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main" && \
   apt update && apt -y install vault \
 
-#Tryin Installing Kubectl - Pre - requisite to install kops \
-RUN apt-get install -y apt-transport-https ca-certificates curl \
-    curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg \
-    echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list \
-    apt-get-y update \
-    apt-get install -y kubectl \
 
-#Install kops
-RUN curl -Lo kops https://github.com/kubernetes/kops/releases/download/$(curl -s https://api.github.com/repos/kubernetes/kops/releases/latest | grep tag_name | cut -d '"' -f 4)/kops-linux-amd64 \
-    chmod +x kops \
-    mv kops /usr/local/bin/kops
 
 
 
