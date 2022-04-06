@@ -20,6 +20,9 @@ RUN curl -L "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/st
       chmod +x /usr/local/bin/kubectl
 
 
+RUN curl -L https://releases.hashicorp.com/vault/1.10.0/vault_1.10.0_linux_amd64.zip -o /tmp/vault.zip && \
+      unzip /tmp/vault.zip -d /usr/local/bin && \
+      rm /tmp/vault.zip
 
 
 
