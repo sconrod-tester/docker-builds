@@ -11,7 +11,7 @@ resources:
       private_key: ((private_key))
 
   # Where we will push the image
-  - name: kops-kube
+  - name: ubuntu-kops
     type: registry-image
     icon: docker
     source:
