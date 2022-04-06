@@ -34,6 +34,8 @@ RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2
   ./aws/install
 
 
+# install kops for k8s-related jobs
+RUN curl -L "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/v1.23.0.txt)/bin/linux/amd64/kubectl" \
 
 
 
