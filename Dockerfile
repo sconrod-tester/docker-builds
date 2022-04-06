@@ -23,10 +23,9 @@ RUN curl https://apt.releases.hashicorp.com/gpg | apt-key add - && \
 #Install Kubectl
 #Tryin Installing Kubectl - Pre - requisite to install kops \
 RUN apt-get install -y apt-transport-https ca-certificates \
-    curl -O /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg \
-    echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | tee /etc/apt/sources.list.d/kubernetes.list \
-    apt -y update \
-    apt -y install kubectl
+    RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl \
+    chmod +x ./kubectl
+    mv ./kubectl /usr/local/bin
 
 #If this doesnt work just do from binary
 
