@@ -1,4 +1,4 @@
-FROM alpine:3.11
+FROM alpine:3.15
 
 ENV KOPS_VERSION=v1.23.0
 # https://kubernetes.io/docs/tasks/kubectl/install/
