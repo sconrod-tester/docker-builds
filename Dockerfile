@@ -36,3 +36,8 @@ RUN curl -Lo kops https://github.com/kubernetes/kops/releases/download/$(curl -s
 
 
 
+
+
+
+
+
