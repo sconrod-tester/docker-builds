@@ -4,7 +4,7 @@ MAINTAINER Sherri Conrod <devopsontap@yahoo.com>
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update && \
-  apt -y install software-properties-common vim pwgen unzip curl python3 python3-pip glibc-source groff less git-core jq openssl openssh-client && \
+  apt -y install software-properties-common vim pwgen unzip curl python3 python3-pip glibc-source groff less git-core jq openssl openssh-client wget && \
   apt clean && \
   rm -rf /var/lib/apt/lists/* \
 
@@ -38,10 +38,8 @@ RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2
 RUN curl -L "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/v1.23.0.txt)/bin/linux/amd64/kubectl" \
 
 
-RUN apt-get -y install wget \
-    wget https://github.com/kubernetes/kops/releases/download/1.6.1/kops-linux-amd64 \
-    chmod +x kops-linux-amd64 \
-    mv kops-linux-amd64 /usr/local/bin/kops
+RUN wget https://github.com/kubernetes/kops/releases/download/1.6.1/kops-linux-amd64 \
+
 
 
 
