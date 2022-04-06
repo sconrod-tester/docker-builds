@@ -3,7 +3,7 @@ MAINTAINER Sherri Conrod <devopsontap@yahoo.com>
 
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN apt-get update && \
+RUN apt -y update && \
   apt -y install software-properties-common vim pwgen unzip curl python3 python3-pip glibc-source groff less git-core jq openssl openssh-client && \
   apt clean && \
   rm -rf /var/lib/apt/lists/* \
