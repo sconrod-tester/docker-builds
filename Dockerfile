@@ -14,16 +14,12 @@ ENV KOPS_VERSION=v1.23.0
 ENV KUBECTL_VERSION=v1.23.0
 
 
-#Install kubectl
-RUN apt-get install -y apt-transport-https ca-certificates && \
-    curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg \
-    echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | tee /etc/apt/sources.list.d/kubernetes.list \
-    apt-get update \
-    apt-get install kubectl \
+# install kubectl for k8s-related jobs
+RUN curl -L "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" \
+      -o /usr/local/bin/kubectl && \
+      chmod +x /usr/local/bin/kubectl
 
 
-#Install kops \
-RUN curl -Lo kops https://github.com/kubernetes/kops/releases/download/$(curl -s https://api.github.com/repos/kubernetes/kops/releases/latest | grep tag_name | cut -d '"' -f 4)/kops-linux-amd64 \
 
 
 
