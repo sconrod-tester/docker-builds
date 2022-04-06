@@ -19,11 +19,19 @@ RUN curl -L "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/st
       -o /usr/local/bin/kubectl && \
       chmod +x /usr/local/bin/kubectl
 
-
+#Install vault
 RUN curl -L https://releases.hashicorp.com/vault/1.10.0/vault_1.10.0_linux_amd64.zip -o /tmp/vault.zip && \
       unzip /tmp/vault.zip -d /usr/local/bin && \
       rm /tmp/vault.zip
 
+# install helm for k8s-related jobs
+RUN curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
+
+
+#Install aws cli
+RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && \
+  unzip awscliv2.zip && \
+  ./aws/install
 
 
 
