@@ -1,6 +1,6 @@
 FROM ubuntu:20.04
 MAINTAINER Sherri Conrod <devopsontap@yahoo.com>
-#Deploy Kops - this one am not able to install Kops or kubectl - may have reached size limitation
+#kops
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update && \
@@ -14,9 +14,27 @@ RUN pip3 install urllib3 paramiko ncurses-term subprocess
 
 RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && \
   unzip awscliv2.zip && \
-  ./aws/install
+  ./aws/install \
+
+#Install Vault Client
 
 RUN curl -fsSL https://apt.releases.hashicorp.com/gpg | apt-key add - && \
   apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main" && \
   apt update && apt -y install vault \
-  rm -rf /var/lib/apt/lists/* \
+
+#Install Kops \
+RUN curl -Lo kops https://github.com/kubernetes/kops/releases/download/$(curl -s https://api.github.com/repos/kubernetes/kops/releases/latest | grep tag_name | cut -d '"' -f 4)/kops-linux-amd64 \
+    chmod +x kops \
+    mv kops /usr/local/bin/kops \
+
+#Install kubectl
+RUN curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" \
+    curl -LO "https://dl.k8s.io/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256" \
+    echo "$(cat kubectl.sha256)  kubectl" | sha256sum --check \
+    install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl \
+    chmod +x kubectl \
+    mkdir -p ~/.local/bin \
+    mv ./kubectl ~/.local/bin/kubectl \
+    kubectl version --client --output=yaml
+
+
