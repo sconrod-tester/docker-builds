@@ -22,8 +22,8 @@ RUN apt-get install -y apt-transport-https ca-certificates && \
     apt-get install kubectl
 
 #Install kops \
-RUN curl -O --location --silent --show-error https://github.com/kubernetes/kops/releases/download/${KOPS_VERSION}/kops-linux-amd64 \
-    mv kops-linux-amd64 /usr/local/bin/kops \
+RUN curl -Lo kops https://github.com/kubernetes/kops/releases/download/$(curl -s https://api.github.com/repos/kubernetes/kops/releases/latest | grep tag_name | cut -d '"' -f 4)/kops-linux-amd64 \
+
 
 
 
