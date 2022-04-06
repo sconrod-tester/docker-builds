@@ -38,7 +38,7 @@ RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2
 RUN curl -L "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/v1.23.0.txt)/bin/linux/amd64/kubectl" \
 
 
-RUN apt-get -y install wget && \
+RUN apt-get -y install wget \
     wget https://github.com/kubernetes/kops/releases/download/1.6.1/kops-linux-amd64 \
     chmod +x kops-linux-amd64 \
     mv kops-linux-amd64 /usr/local/bin/kops
