@@ -14,13 +14,6 @@ RUN apk --no-cache add ca-certificates \
   && chmod +x /usr/local/bin/kops /usr/local/bin/kubectl \
   && apk del --purge build-dependencies \
 
-RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && \
-  unzip awscliv2.zip && \
-  ./aws/install
-
-RUN curl -fsSL https://apt.releases.hashicorp.com/gpg | apt-key add - && \
-  && apk --no-cache  "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main" \
-  && apk  && apt -y install vault \
 
 ENTRYPOINT ["/usr/local/bin/kops"]
 CMD ["--help"]
