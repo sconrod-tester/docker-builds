@@ -11,12 +11,12 @@ resources:
       private_key: ((private_key))
 
   # Where we will push the image
-  - name: kops-kube
+  - name: kops-kube-v1.21
     type: registry-image
     icon: docker
     source:
       repository: ((image-repo-name))/kops-kube
-      tag: 1.0
+      tag: 1.21
       username: ((registry-username))
       password: ((registry-password))
 
