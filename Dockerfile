@@ -35,9 +35,10 @@ RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2
 
 
 # install kops for k8s-related jobs
-RUN curl -L "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/v1.23.0.txt)/bin/linux/amd64/kubectl" \
-    -o /usr/local/bin/kops && \
-    chmod +x /usr/local/bin/kops
+RUN curl -Lo kops https://github.com/kubernetes/kops/releases/download/$(curl -s https://api.github.com/repos/kubernetes/kops/releases/1.21 | grep tag_name | cut -d '"' -f 4)/kops-linux-amd64
+  chmod +x kops
+  mv kops /usr/local/bin/kops
+
 
 
 
