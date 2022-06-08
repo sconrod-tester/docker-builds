@@ -8,7 +8,6 @@ ENV CENTOS_FRONTEND noninteractive
 
 RUN yum -y update; yum clean all
 RUN yum -y install java-1.8.0-openjdk.x86_64; yum clean all
-RUN yum clean all; yum clean all
 RUN mkdir /opt/tomcat && \
     groupadd -r tomcat && \
     useradd -M -s /bin/nologin -g tomcat -d /opt/tomcat tomcat && \

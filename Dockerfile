@@ -1,18 +1,6 @@
-FROM centos:7
-
-
-RUN mkdir /opt/tomcat/
-
-WORKDIR /opt/tomcat
-RUN curl -O https://www-eu.apache.org/dist/tomcat/tomcat-8/v8.5.40/bin/apache-tomcat-8.5.40.tar.gz
-RUN tar xvfz apache*.tar.gz
-RUN mv apache-tomcat-8.5.40/* /opt/tomcat/.
-RUN yum -y install java
-RUN java -version
-
-WORKDIR /opt/tomcat/webapps
-RUN curl -O -L https://github.com/sconrod-tester/docker-builds/blob/centos7/Supercar-Trader.war
-
+FROM tomcat:8.0-alpine
+ADD Supercar-Trader.war /usr/local/tomcat/webapps/
+COPY ./context.xml /opt/tomcat/webapps/manager/META-INF/context.xml
+COPY ./tomcat-users.xml /opt/tomcat/conf/tomcat-users.xml
 EXPOSE 8080
-
-CMD ["/opt/tomcat/bin/catalina.sh", "run"]
+CMD [“catalina.sh”, “run”]
