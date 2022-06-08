@@ -1,10 +1,10 @@
-FROM ubuntu:20.04
+FROM centos:7
 MAINTAINER Sherri Conrod <devopsontap@yahoo.com>
 #your image name
 #update your docker image with your required python modules and other libraries - remember to manuall increment the tag version until symantec verioning is applied
 #Required to use your params file for your docker repo with creds - enter into vault too.
 
-ENV DEBIAN_FRONTEND noninteractive
+ENV CENTOS_FRONTEND noninteractive
 
 RUN yum -y update && \
     yum -y install java-1.8.0-openjdk.x86_64 && \
