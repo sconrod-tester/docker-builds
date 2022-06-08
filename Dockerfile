@@ -6,7 +6,7 @@ MAINTAINER Sherri Conrod <devopsontap@yahoo.com>
 
 ENV CENTOS_FRONTEND noninteractive
 
-RUN yum update -y && \
+RUN yum -y update && \
     yum -y install java-1.8.0-openjdk.x86_64 && \
     yum -y install gcc intltool gperf glib2-devel makecache systemd-libs shadow-utils.x86_64 && \
     mkdir /opt/tomcat && \
