@@ -11,7 +11,6 @@ RUN yum -y update && \
     yum -y install gcc intltool gperf glib2-devel makecache systemd-libs && \
     groupadd tomcat && \
     useradd -M -s /bin/nologin -g tomcat -d /opt/tomcat tomcat && \
-    useradd -M -s /bin/nologin -g tomcat -d /opt/tomcat tomcat && \
     curl -O https://dlcdn.apache.org/tomcat/tomcat-8/v8.5.79/bin/apache-tomcat-8.5.79.tar.gz && \
     tar xvf apache-tomcat-8*tar.gz -C /opt/tomcat --strip-components=1 && \
     cd /opt/tomcat && \
