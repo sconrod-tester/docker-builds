@@ -3,3 +3,5 @@
 Each Docker File version has its own branch
 bump_aliases is set to true
 When Alias is bumped, the upstream pipelines consuming the new version need to be updated
+
+Use the Params file for docker build pipelines
