@@ -21,10 +21,10 @@ RUN mkdir /opt/tomcat && \
     chown -R tomcat webapps/ work/ temp/ logs \
 
 
-COPY context.xml /opt/tomcat/webapps/manager/META-INF/context.xml
-COPY tomcat-users.xml /opt/tomcat/conf/tomcat-users.xml
-COPY tomcat.service /etc/systemd/system/tomcat.service
-COPY Supercar-Trader.war /opt/tomcat/webapps/Supercar-Trader.war
+COPY ./context.xml /opt/tomcat/webapps/manager/META-INF/context.xml
+COPY ./tomcat-users.xml /opt/tomcat/conf/tomcat-users.xml
+COPY ./tomcat.service /etc/systemd/system/tomcat.service
+COPY ./Supercar-Trader.war /opt/tomcat/webapps/Supercar-Trader.war
 
 
 EXPOSE 80
