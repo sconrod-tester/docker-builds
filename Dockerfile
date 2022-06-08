@@ -30,6 +30,7 @@ ADD Supercar-Trader.war /opt/tomcat/webapps
 
 EXPOSE 80
 ENV HOME /root
+CMD ["systemctl start tomcat"]
 
 
 
