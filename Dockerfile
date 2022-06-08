@@ -22,10 +22,10 @@ RUN yum -y update && \
     chown -R tomcat webapps/ work/ temp/ logs \
 
 
-COPY context.xml /opt/tomcat/webapps/manager/META-INF/context.xml
-COPY tomcat-users.xml /opt/tomcat/conf/tomcat-users.xml
-COPY tomcat.service /etc/systemd/system/tomcat.service
-ADD Supercar-Trader.war /opt/tomcat/webapps
+COPY context.xml /opt/tomcat/webapps/manager/META-INF/
+COPY tomcat-users.xml /opt/tomcat/conf/
+COPY tomcat.service /etc/systemd/system/
+ADD Supercar-Trader.war /opt/tomcat/webapps/
 
 
 EXPOSE 80
