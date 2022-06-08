@@ -25,7 +25,7 @@ RUN yum -y update && \
 
 COPY ./context.xml /opt/tomcat/webapps/manager/META-INF/context.xml
 COPY ./tomcat-users.xml /opt/tomcat/conf/tomcat-users.xml
-COPY ./tomcat-service /etc/systemd/system/tomcat.service
+COPY ./tomcat.service /etc/systemd/system/tomcat.service
 ADD ./Supercar-Trader.war /opt/tomcat/webapps
 
 
