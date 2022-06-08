@@ -18,7 +18,6 @@ RUN yum -y update && \
     chgrp -R tomcat /opt/tomcat && \
     chmod -R g+r /opt/tomcat/conf && \
     chmod g+x /opt/tomcat/conf && \
-    mkdir webapps/ work/ temp/ logs/ && \
     chown -R tomcat webapps/ work/ temp/ logs \
     yum clean all
 
