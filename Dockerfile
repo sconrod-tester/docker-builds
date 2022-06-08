@@ -9,6 +9,7 @@ ENV CENTOS_FRONTEND noninteractive
 RUN yum -y update && \
     yum -y install java-1.8.0-openjdk.x86_64 && \
     yum -y install gcc intltool gperf glib2-devel makecache systemd-libs shadow-utils.x86_64 && \
+    yum clean all && \
     mkdir /opt/tomcat && \
     groupadd -r tomcat && \
     useradd -M -s /bin/nologin -g tomcat -d /opt/tomcat tomcat && \
@@ -19,7 +20,7 @@ RUN yum -y update && \
     chmod -R g+r /opt/tomcat/conf && \
     chmod g+x /opt/tomcat/conf && \
     chown -R tomcat webapps/ work/ temp/ logs \
-    yum clean all
+
 
 COPY context.xml /opt/tomcat/webapps/manager/META-INF/context.xml
 COPY tomcat-users.xml /opt/tomcat/conf/tomcat-users.xml
