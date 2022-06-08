@@ -6,10 +6,10 @@ MAINTAINER Sherri Conrod <devopsontap@yahoo.com>
 
 ENV CENTOS_FRONTEND noninteractive
 
-RUN yum -y update && \
-    yum -y install java-1.8.0-openjdk.x86_64 && \
-    yum clean all && \
-    mkdir /opt/tomcat && \
+RUN yum -y update; yum clean all
+RUN yum -y install java-1.8.0-openjdk.x86_64; yum clean all
+RUN yum clean all; yum clean all
+RUN mkdir /opt/tomcat && \
     groupadd -r tomcat && \
     useradd -M -s /bin/nologin -g tomcat -d /opt/tomcat tomcat && \
     curl -O https://dlcdn.apache.org/tomcat/tomcat-8/v8.5.79/bin/apache-tomcat-8.5.79.tar.gz && \
