@@ -16,7 +16,6 @@ RUN yum -y update && \
     tar xvf apache-tomcat-8*tar.gz -C /opt/tomcat --strip-components=1 && \
     cd /opt/tomcat && \
     chgrp -R tomcat /opt/tomcat && \
-    mkdir /opt/tomcat/conf && \
     chmod -R g+r /opt/tomcat/conf && \
     chmod g+x /opt/tomcat/conf && \
     mkdir webapps/ work/ temp/ logs/ && \
