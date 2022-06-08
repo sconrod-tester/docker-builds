@@ -6,7 +6,7 @@ MAINTAINER Sherri Conrod <devopsontap@yahoo.com>
 
 ENV CENTOS_FRONTEND noninteractive
 
-RUN yum update && \
+RUN yum -y update && \
     yum install java-1.8.0-openjdk.x86_64 && \
     yum install gcc intltool gperf glib2-devel makecache systemd-libs shadow-utils.x86_64 && \
     yum clean all && \
@@ -22,10 +22,10 @@ RUN yum update && \
     chown -R tomcat webapps/ work/ temp/ logs \
 
 
-COPY context.xml /opt/tomcat/webapps/manager/META-INF
-COPY tomcat-users.xml /opt/tomcat/conf
-COPY tomcat.service /etc/systemd/system
-ADD Supercar-Trader.war /opt/tomcat/webapps
+COPY context.xml /opt/tomcat/webapps/manager/META-INF/context.xml
+COPY tomcat-users.xml /opt/tomcat/conf/tomcat-users.xml
+COPY tomcat.service /etc/systemd/system/tomcat.service
+COPY Supercar-Trader.war /opt/tomcat/webapps/Supercar-Trader.war
 
 
 EXPOSE 80
