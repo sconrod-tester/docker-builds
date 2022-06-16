@@ -6,8 +6,8 @@ MAINTAINER Sherri Conrod <devopsontap@yahoo.com>
 
 ENV CENTOS_FRONTEND noninteractive
 
-RUN yum -y update; yum clean all
 RUN yum -y install java-1.8.0-openjdk.x86_64; yum clean all
+RUN yum -y install git; yum clean all
 RUN mkdir /opt/tomcat && \
     groupadd -r tomcat && \
     useradd -M -s /bin/nologin -g tomcat -d /opt/tomcat tomcat && \
@@ -17,18 +17,23 @@ RUN mkdir /opt/tomcat && \
     chgrp -R tomcat /opt/tomcat && \
     chmod -R g+r /opt/tomcat/conf && \
     chmod g+x /opt/tomcat/conf && \
-    chown -R tomcat webapps/ work/ temp/ logs \
+    chown -R tomcat webapps && \
+    chown -R tomcat work && \
+    chown -R tomcat temp && \
+    chown -R tomcat logs
+
+COPY context.xml /opt/tomcat/manager/META-INF/context.xml
+COPY tomcat-users.xml /opt/tomcat/conf/tomcat-users.xml
+COPY tomcat.service /etc/systemd/system/tomcat.service
+
+RUN git clone https://github.com/sherifadel90/AppDynamics-SupercarsJavaApp.git
+RUN cd AppDynamics-SupercarsJavaApp
+
+EXPOSE 8080
+
+CMD ["/opt/tomcat/bin/catalina.sh" , "run"]
 
 
-COPY ./context.xml /opt/tomcat/webapps/manager/META-INF/context.xml
-COPY ./tomcat-users.xml /opt/tomcat/conf/tomcat-users.xml
-COPY ./tomcat.service /etc/systemd/system/tomcat.service
-COPY ./Supercar-Trader.war /opt/tomcat/webapps/
-
-
-EXPOSE 80
-ENV HOME /root
-CMD ["systemctl start tomcat"]
 
 
 

@@ -7,6 +7,7 @@ MAINTAINER Sherri Conrod <devopsontap@yahoo.com>
 ENV CENTOS_FRONTEND noninteractive
 
 RUN yum -y install java-1.8.0-openjdk.x86_64; yum clean all
+RUN yum -y install git; yum clean all
 RUN mkdir /opt/tomcat && \
     groupadd -r tomcat && \
     useradd -M -s /bin/nologin -g tomcat -d /opt/tomcat tomcat && \
@@ -21,15 +22,19 @@ RUN mkdir /opt/tomcat && \
     chown -R tomcat temp && \
     chown -R tomcat logs
 
+
+RUN git clone https://github.com/sherifadel90/AppDynamics-SupercarsJavaApp.git
+RUN cd AppDynamics-SupercarsJavaApp
+
+CMD ["/opt/tomcat/bin/catalina.sh" , "run"]
+CMD ["/opt/tomcat/bin/catalina.sh" , "stop"]
+
 COPY context.xml /opt/tomcat/manager/META-INF/context.xml
 COPY tomcat-users.xml /opt/tomcat/conf/tomcat-users.xml
 COPY tomcat.service /etc/systemd/system/tomcat.service
-COPY Supercar-Trader.war /opt/tomcat/webapps/Supercar-Trader.war
 
+CMD ["/opt/tomcat/bin/catalina.sh" , "run"]
 EXPOSE 8080
-
-
-
 
 
 

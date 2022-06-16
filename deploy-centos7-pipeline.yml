@@ -16,7 +16,7 @@ resources:
     icon: docker
     source:
       repository: ((image-repo-name))/centos7oci-supercar
-      tag: 1.0
+      tag: 2.0
       username: ((registry-username))
       password: ((registry-password))
 
