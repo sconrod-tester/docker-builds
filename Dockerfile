@@ -8,6 +8,7 @@ ENV CENTOS_FRONTEND noninteractive
 
 RUN yum -y install java-1.8.0-openjdk.x86_64; yum clean all
 RUN yum -y install git; yum clean all
+RUN yum -y install vim; yum clean all
 RUN mkdir /opt/tomcat && \
     groupadd -r tomcat && \
     useradd -M -s /bin/nologin -g tomcat -d /opt/tomcat tomcat && \
@@ -24,15 +25,16 @@ RUN mkdir /opt/tomcat && \
 
 
 RUN git clone https://github.com/sherifadel90/AppDynamics-SupercarsJavaApp.git
-RUN cd AppDynamics-SupercarsJavaApp
+RUN mv /opt/tomcat/webapps/manager/META-INF/context.xml /opt/tomcat/webapps/manager/META-INF/context.xml.bak
 
-CMD ["/opt/tomcat/bin/catalina.sh" , "run"]
 CMD ["/opt/tomcat/bin/catalina.sh" , "stop"]
 
+COPY Supercar-Trader.war /opt/tomcat/webapps/Supercar-Trader.war
 COPY tomcat-users.xml /opt/tomcat/conf/tomcat-users.xml
 COPY context.xml /opt/tomcat/webapps/manager/META-INF/context.xml
 COPY context.xml /opt/tomcat/webapps/host-manager/META-INF/context.xml
 COPY tomcat.service /etc/systemd/system/tomcat.service
+
 
 CMD ["/opt/tomcat/bin/catalina.sh" , "run"]
 EXPOSE 8080
