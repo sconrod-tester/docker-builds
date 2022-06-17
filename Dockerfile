@@ -29,6 +29,7 @@ RUN git clone https://github.com/sherifadel90/AppDynamics-SupercarsJavaApp.git
 CMD ["/opt/tomcat/bin/catalina.sh" , "stop"]
 RUN mv /opt/tomcat/webapps/manager/META-INF/context.xml /opt/tomcat/webapps/manager/META-INF/context.xml.bak
 
+COPY sherri.txt /opt/tomcat/webapps/manager/META-INF/sherri.txt
 COPY Supercar-Trader.war /opt/tomcat/webapps/Supercar-Trader.war
 COPY tomcat-users.xml /opt/tomcat/conf/tomcat-users.xml
 COPY context.xml /opt/tomcat/webapps/manager/META-INF/context.xml
