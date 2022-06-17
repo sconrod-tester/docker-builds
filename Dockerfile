@@ -31,6 +31,7 @@ CMD ["/opt/tomcat/bin/catalina.sh" , "stop"]
 
 COPY context.xml /opt/tomcat/manager/META-INF/context.xml
 COPY tomcat-users.xml /opt/tomcat/conf/tomcat-users.xml
+COPY webapp-context.xml /opt/tomcat/webapps/manager/META-INF/context.xml
 COPY tomcat.service /etc/systemd/system/tomcat.service
 
 CMD ["/opt/tomcat/bin/catalina.sh" , "run"]
