@@ -11,11 +11,11 @@ resources:
       private_key: ((private_key))
 
   # Where we will push the image
-  - name: ubuntu-kops-1.22
+  - name: ubuntu-kops-1.22.0
     type: registry-image
     icon: docker
     source:
-      repository: ((image-repo-name))/ubuntu-kops
+      repository: ((image-repo-name))/ubuntu-kops-1.22
       tag: 1.22
       username: ((registry-username))
       password: ((registry-password))
@@ -40,7 +40,7 @@ jobs:
             CONTEXT: git-dockerfile-resource
           run:
             path: build
-      - put: ubuntu-kops-1.22
+      - put: ubuntu-kops-1.22.0
         params:
           image: image/image.tar
           bump_aliases: true
