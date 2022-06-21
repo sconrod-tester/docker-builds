@@ -15,8 +15,8 @@ resources:
     type: registry-image
     icon: docker
     source:
-      repository: ((image-repo-name))/centos7oci-supercar
-      tag: 1.0
+      repository: ((image-repo-name))/centos7-tomcat
+      tag: 2.0
       username: ((registry-username))
       password: ((registry-password))
 
@@ -40,7 +40,7 @@ jobs:
             CONTEXT: git-dockerfile-resource
           run:
             path: build
-      - put: tomcat
+      - put: centos7-tomcat
         params:
           image: image/image.tar
           bump_aliases: true
