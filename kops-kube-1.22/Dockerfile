@@ -15,7 +15,7 @@ ENV KUBECTL_VERSION=v1.22.0
 
 
 # install kubectl for k8s-related jobs
-RUN curl -L "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/1.22)/bin/linux/amd64/kubectl" \
+RUN curl -L "https://dl.k8s.io/release/$(curl -L -s curl -LO https://dl.k8s.io/release/v1.22.0/bin/linux/amd64/kubectl" \
       -o /usr/local/bin/kubectl && \
       chmod +x /usr/local/bin/kubectl
 
@@ -34,10 +34,6 @@ RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2
   ./aws/install
 
 
-# install kops for k8s-related jobs
-RUN curl -L "https://dl.k8s.io/release/$(curl -L -s  https://dl.k8s.io/release/v1.22.0/bin/linux/amd64/kubectl" \
-    -o /usr/local/bin/kops && \
-    chmod +x /usr/local/bin/kops
 
 
 
