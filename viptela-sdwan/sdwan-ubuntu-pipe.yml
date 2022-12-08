@@ -5,7 +5,7 @@ resources:
     icon: github
     source:
       uri: git@github.com:devops-ontap/sdwan.git
-      branch: dcloud-chcortez
+      branch: viptela-sdwan
       Username: ((Username))
       email: ((email))
       private_key: ((private_key))
