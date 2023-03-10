@@ -4,7 +4,7 @@ resources:
     type: git
     icon: github
     source:
-      uri: git@github.com:devops-ontap/sdwan.git
+      uri: git@github.com:sconrod-tester/docker-builds.git
       branch: viptela-sdwan
       Username: ((Username))
       email: ((email))
@@ -22,6 +22,7 @@ resources:
 
 jobs:
   - name: build-and-push
+    public: true
     plan:
       - get: git-dockerfile-resource
       - task: build-task-image
