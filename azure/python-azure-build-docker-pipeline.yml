@@ -11,7 +11,7 @@ resources:
       private_key: ((private_key))
 
   # Where we will push the image
-  - name: sdwan-ubuntu-azure
+  - name: sdwan-azure-cli
     type: registry-image
     icon: docker
     source:
@@ -41,6 +41,6 @@ jobs:
             CONTEXT: git-dockerfile-resource
           run:
             path: build
-      - put: sdwan-ubuntu
+      - put: sdwan-azure-cli
         params:
           image: image/image.tar
