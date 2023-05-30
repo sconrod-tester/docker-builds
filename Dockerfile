@@ -14,8 +14,9 @@ RUN pip3 install urllib3 paramiko ncurses-term subprocess
 #Install Azure CLI
 
 RUN apt remove azure-cli -y && \
-    apt autoremove -y && \
-RUN curl -sL "https://aka.ms/InstallAzureCLIDeb" | bash && \
+    apt autoremove -y
+
+RUN curl -sL "https://aka.ms/InstallAzureCLIDeb" | bash
 
 RUN curl -fsSL https://apt.releases.hashicorp.com/gpg | apt-key add - && \
   apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main" && \
